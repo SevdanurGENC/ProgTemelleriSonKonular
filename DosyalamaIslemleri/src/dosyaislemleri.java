@@ -11,6 +11,7 @@ public class dosyaislemleri {
 
 	public static void DosyaOlustur(String URL) {
 		File dosya = new File(URL);
+		//File, var olan dosyalar icin bilgi almada kullanilir.
 		try {
 			if (!dosya.exists()) {
 				dosya.createNewFile();
@@ -18,7 +19,8 @@ public class dosyaislemleri {
 			} else {
 				System.out.println("Dosya oldugundan olusturma islemi yapilmayacaktir. ");
 			}
-		} catch (IOException e) {
+		} catch (IOException e) {  //temel girdi cikti islemleriyle ilgilidir,
+			//bekleneinin disinda bir deger girildiginde olusan hatadir.
 			// TODO: handle exception
 			e.printStackTrace();
 		}
@@ -36,7 +38,7 @@ public class dosyaislemleri {
 
 	public static void DosyaOku(String URL) {
 		File dosya = new File(URL);
-		try {
+		try { //Byte tabanlidir. Byte dizilerin ya da byte’larin tek tek okunmasini saglar.
 			FileInputStream fis = new FileInputStream(dosya);
 			int dosyaBoyutu = (int) dosya.length();
 			System.out.println("\nDosya uzunlugu : " + dosyaBoyutu);
@@ -44,7 +46,7 @@ public class dosyaislemleri {
 				System.out.print((char) fis.read());
 			}
 			fis.close();
-		} catch (FileNotFoundException e) {
+		} catch (FileNotFoundException e) { //file bulunamadiysa gerceklesen istisna durumu.
 			// TODO: handle exception
 			System.out.println("Dosya Bulunamadi..");
 		} catch (IOException e) {
@@ -55,7 +57,7 @@ public class dosyaislemleri {
 
 	public static void DosyaYazma(String URL) {
 		File dosya = new File(URL);
-		try {
+		try { //Byte tabanlidir. Byte dizilerin ya da byte’larin tek tek yazilmasini saglar.
 			FileOutputStream fos = new FileOutputStream(dosya);
 			String icerik = "Taskopru MYO. \nBilgisayar Programciligi";
 			fos.write(icerik.getBytes());
@@ -93,7 +95,7 @@ public class dosyaislemleri {
 
 	public static void DosyayaVeriEkleme(String URL) {
 
-		BufferedWriter bw = null;
+		BufferedWriter bw = null;  //Karakterlerin dosyalara yazilmasini saglar.
 		File dosya = new File(URL);
 		try { // fileWriter nesnesine true parametre yazarsak eklenen content'i dosyanin
 				// sonuna ekler
