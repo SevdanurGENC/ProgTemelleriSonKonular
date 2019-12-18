@@ -1,4 +1,7 @@
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class HasMapOrnegi {
 
@@ -10,6 +13,15 @@ public class HasMapOrnegi {
 		hashMap.put(3, "C");
 
 		System.out.println(hashMap.toString());
+		
+		Set s = hashMap.entrySet();
+		//set, map icindeki anahtar oge ciftlerini ceker
+		//iterator map icindeki degerleri tarar.
+		for (Iterator i = s.iterator(); i.hasNext();) {
+			Map.Entry me = (Map.Entry) i.next();
+			System.out.println(me.getKey() + " : " + me.getValue());
+		}
+		
 		hashMap.remove(3);
 		System.out.println(hashMap.toString());
 	}
